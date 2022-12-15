@@ -1,29 +1,29 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 type Props = {
     article: Article;
 }
 function ReadMoreButton({article} : Props) {
-    const router = useRouter();
-
-    const handleClick = () => {
-        const queryString = Object.entries(article)
-        .map(([key, value]) => `${key}=${value}`)
-        .join("&")
-        const url = `/article?${queryString}`;
-        console.log(url);
-        router.push(url);
-    }
-
   return (
-    <button
-        onClick={handleClick}
-        className="bg-orange-400 h-10 rounded-b-lg dark:text-gray-900 hover:bg-orange-500"
+    <Link
+        href={{
+            pathname: "/article",
+            query: {
+                author: article.author,
+                category: article.category,
+                title: article.title,
+                source: article.source,
+                image: article.image,
+                url: article.url,
+                description: article.description,
+                published_at: article.published_at,
+                language: article.language,
+                country: article.country,
+            }
+        }}
+        className="bg-orange-400 h-10 rounded-b-lg dark:text-gray-900 hover:bg-orange-500 text-center flex flex-col justify-center"
     >
         Read More
-    </button>
+    </Link>
   )
 }
 

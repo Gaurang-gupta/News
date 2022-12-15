@@ -10,7 +10,7 @@ async function Homepage() {
   // console.log(news)
 
   await new Promise((resolve) => setTimeout(resolve, 3000))
-// const data = sortNewsByImage(response);
+// const news = sortNewsByImage(response);
   return (
     <div>
       <NewsList news={news}/>

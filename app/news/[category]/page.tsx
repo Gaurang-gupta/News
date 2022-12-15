@@ -1,6 +1,7 @@
 import fetchNews from "../../../lib/fetchNews";
 import NewsList from "../../NewsList";
 import { categories } from "../../../constants"
+import response from "../../../response.json"
 
 type Props = {
     params: { category: Category};
@@ -8,7 +9,6 @@ type Props = {
 
 async function NewsCategory({params: { category }} : Props) {
     const news: NewsResponse = await fetchNews(category);
-
   return (
     <div>
         <h1 className="headerTitle">{category}</h1>
